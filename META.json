@@ -20,13 +20,13 @@
     }
   },
   "resources": {
-    "homepage": "https://github.com/huseyinakbas/pgcalendar",
+    "homepage": "https://github.com/h4kbas/pgcalendar",
     "bugtracker": {
-      "web": "https://github.com/huseyinakbas/pgcalendar/issues"
+      "web": "https://github.com/h4kbas/pgcalendar/issues"
     },
     "repository": {
-      "url": "https://github.com/huseyinakbas/pgcalendar.git",
-      "web": "https://github.com/huseyinakbas/pgcalendar",
+      "url": "https://github.com/h4kbas/pgcalendar.git",
+      "web": "https://github.com/h4kbas/pgcalendar",
       "type": "git"
     }
   },

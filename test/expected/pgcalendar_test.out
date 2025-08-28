@@ -1,0 +1,136 @@
+-- Test 1: Check if extension can be created
+ ?column? 
+----------
+        1
+(1 row)
+
+-- Test 2: Verify schema exists
+ schema_name 
+-------------
+ pgcalendar
+(1 row)
+
+-- Test 3: Verify tables exist
+ table_name 
+------------
+ events
+ exceptions
+ schedules
+(3 rows)
+
+-- Test 4: Verify types exist
+   typname    
+--------------
+ exception_type
+ recurrence_type
+(2 rows)
+
+-- Test 5: Verify functions exist
+              proname               
+------------------------------------
+ check_schedule_overlap
+ generate_projections
+ get_event_projections
+ get_events_detailed
+ get_next_recurrence_date
+ prevent_schedule_overlap
+ should_generate_projection
+ transition_event_schedule
+ update_updated_at_column
+(9 rows)
+
+-- Test 6: Verify view exists
+   viewname    
+--------------
+ event_calendar
+(1 row)
+
+-- Test 7: Basic event creation
+ event_id 
+----------
+        1
+(1 row)
+
+-- Test 8: Basic schedule creation
+ schedule_id 
+-------------
+           1
+(1 row)
+
+-- Test 9: Test projection generation
+ projection_date |      start_time      |       end_time        | event_name | event_description | event_category | schedule_description | status 
+-----------------+---------------------+----------------------+------------+-------------------+----------------+---------------------+--------
+ 2024-01-01     | 2024-01-01 09:00:00 | 2024-01-01 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-02     | 2024-01-02 09:00:00 | 2024-01-02 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-03     | 2024-01-03 09:00:00 | 2024-01-03 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-04     | 2024-01-04 09:00:00 | 2024-01-04 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-05     | 2024-01-05 09:00:00 | 2024-01-05 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-06     | 2024-01-06 09:00:00 | 2024-01-06 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-07     | 2024-01-07 09:00:00 | 2024-01-07 23:59:59 | Test Event | A test event for testing | test           |                     | active
+(7 rows)
+
+-- Test 10: Test exception creation
+ exception_id 
+--------------
+            1
+(1 row)
+
+-- Test 11: Test modified projection with exception
+ projection_date |      start_time      |       end_time        | event_name | event_description | event_category | schedule_description | status 
+-----------------+---------------------+----------------------+------------+-------------------+----------------+---------------------+--------
+ 2024-01-01     | 2024-01-01 09:00:00 | 2024-01-01 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-02     | 2024-01-02 09:00:00 | 2024-01-02 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-04     | 2024-01-04 09:00:00 | 2024-01-04 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-05     | 2024-01-05 09:00:00 | 2024-01-05 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-06     | 2024-01-06 09:00:00 | 2024-01-06 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-07     | 2024-01-07 09:00:00 | 2024-01-07 23:59:59 | Test Event | A test event for testing | test           |                     | active
+(6 rows)
+
+-- Test 12: Test overlap prevention
+-- (This test should pass silently as the overlap is prevented)
+
+-- Test 13: Test schedule transition
+ transition_event_schedule 
+---------------------------
+                         2
+(1 row)
+
+-- Test 14: Test detailed events view
+ projection_date |      start_time      |       end_time        | event_name | event_description | event_category | schedule_description | status 
+-----------------+---------------------+----------------------+------------+-------------------+----------------+---------------------+--------
+ 2024-01-01     | 2024-01-01 09:00:00 | 2024-01-01 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-02     | 2024-01-02 09:00:00 | 2024-01-02 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-04     | 2024-01-04 09:00:00 | 2024-01-04 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-05     | 2024-01-05 09:00:00 | 2024-01-05 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-06     | 2024-01-06 09:00:00 | 2024-01-06 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-07     | 2024-01-07 09:00:00 | 2024-01-07 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-15     | 2024-01-15 09:00:00 | 2024-01-15 23:59:59 | Test Event | A test event for testing | test           | Transitioned to weekly schedule | active
+ 2024-01-22     | 2024-01-22 09:00:00 | 2024-01-22 23:59:59 | Test Event | A test event for testing | test           | Transitioned to weekly schedule | active
+ 2024-01-29     | 2024-01-29 09:00:00 | 2024-01-29 23:59:59 | Test Event | A test event for testing | test           | Transitioned to weekly schedule | active
+(9 rows)
+
+-- Test 15: Test calendar view
+ projection_date |      start_time      |       end_time        | event_name | event_description | event_category | schedule_description | status 
+-----------------+---------------------+----------------------+------------+-------------------+----------------+---------------------+--------
+ 2024-01-01     | 2024-01-01 09:00:00 | 2024-01-01 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-02     | 2024-01-02 09:00:00 | 2024-01-02 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-04     | 2024-01-04 09:00:00 | 2024-01-04 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-05     | 2024-01-05 09:00:00 | 2024-01-05 23:59:59 | Test Event | A test event for testing | test           |                     | active
+ 2024-01-06     | 2024-01-06 09:00:00 | 2024-01-06 23:59:59 | Test Event | A test event for testing | test           |                     | active
+(5 rows)
+
+-- Test 16: Verify cleanup
+ remaining_events 
+------------------
+                0
+(1 row)
+
+ remaining_schedules 
+---------------------
+                   0
+(1 row)
+
+ remaining_exceptions 
+----------------------
+                    0
+(1 row)

@@ -42,3 +42,6 @@ target/
 
 # Test data
 postgres_data_test/
+# PGXN package files
+pgcalendar-*.tar.gz
+pgcalendar-*/

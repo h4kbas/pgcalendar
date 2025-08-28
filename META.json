@@ -1,0 +1,45 @@
+{
+  "name": "pgcalendar",
+  "abstract": "Infinite Calendar Extension for PostgreSQL with recurring events, schedules, and exception handling",
+  "description": "pgcalendar provides a robust system for managing recurring events where events represent logical entities (meetings, tasks, etc.), schedules define non-overlapping time configurations that generate projections, exceptions modify individual instances (cancellations, modifications), and projections are the actual calendar occurrences generated from schedules. Supports daily, weekly, monthly, and yearly recurrence patterns with infinite projections and comprehensive exception handling.",
+  "version": "1.0.0",
+  "maintainer": "Huseyin Akbas",
+  "license": "mit",
+  "provides": {
+    "pgcalendar": {
+      "abstract": "Infinite Calendar Extension for PostgreSQL",
+      "file": "pgcalendar.sql",
+      "version": "1.0.0"
+    }
+  },
+  "prereqs": {
+    "runtime": {
+      "requires": {
+        "PostgreSQL": "12.0"
+      }
+    }
+  },
+  "resources": {
+    "homepage": "https://github.com/huseyinakbas/pgcalendar",
+    "bugtracker": {
+      "web": "https://github.com/huseyinakbas/pgcalendar/issues"
+    },
+    "repository": {
+      "url": "https://github.com/huseyinakbas/pgcalendar.git",
+      "web": "https://github.com/huseyinakbas/pgcalendar",
+      "type": "git"
+    }
+  },
+  "tags": [
+    "calendar",
+    "recurring",
+    "events",
+    "scheduling",
+    "projections",
+    "exceptions"
+  ],
+  "meta-spec": {
+    "version": "1.0.0",
+    "url": "https://pgxn.org/meta/spec.txt"
+  }
+}

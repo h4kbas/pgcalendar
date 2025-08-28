@@ -294,4 +294,4 @@ SELECT * FROM pgcalendar.get_events_detailed(
 
 ## License
 
-This extension is provided as-is for educational and development purposes.
+This extension is licensed under the MIT License. See the LICENSE file for details.

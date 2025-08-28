@@ -1,0 +1,36 @@
+# PGXN-compatible Makefile for pgcalendar extension
+# This follows the standard PostgreSQL extension build process
+
+EXTENSION = pgcalendar
+DATA = pgcalendar--1.0.0.sql pgcalendar--1.0.0--uninstall.sql
+DOCS = README.md
+PG_CONFIG = pg_config
+
+# Default target
+all: $(EXTENSION)
+
+# Build the extension
+$(EXTENSION): $(EXTENSION).control
+
+# Install the extension
+install: $(EXTENSION)
+	$(PG_CONFIG) --pgxsdir=$(shell $(PG_CONFIG) --pgxs) --install
+
+# Uninstall the extension
+uninstall:
+	$(PG_CONFIG) --pgxsdir=$(shell $(PG_CONFIG) --pgxs) --uninstall
+
+# Clean build artifacts
+clean:
+	rm -f $(EXTENSION)
+
+# Show help
+help:
+	@echo "Available targets:"
+	@echo "  all       - Build the extension (default)"
+	@echo "  install   - Install the extension"
+	@echo "  uninstall - Uninstall the extension"
+	@echo "  clean     - Remove build artifacts"
+	@echo "  help      - Show this help message"
+
+.PHONY: all install uninstall clean help

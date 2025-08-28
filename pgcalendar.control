@@ -1,0 +1,7 @@
+# pgcalendar extension
+comment = 'Infinite Calendar Extension for PostgreSQL with recurring events, schedules, and exception handling'
+default_version = '1.0.0'
+module_pathname = '$libdir/pgcalendar'
+relocatable = false
+schema = pgcalendar
+superuser = false

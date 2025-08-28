@@ -3,7 +3,7 @@
   "abstract": "Infinite Calendar Extension for PostgreSQL with recurring events, schedules, and exception handling",
   "description": "pgcalendar provides a robust system for managing recurring events where events represent logical entities (meetings, tasks, etc.), schedules define non-overlapping time configurations that generate projections, exceptions modify individual instances (cancellations, modifications), and projections are the actual calendar occurrences generated from schedules. Supports daily, weekly, monthly, and yearly recurrence patterns with infinite projections and comprehensive exception handling.",
   "version": "1.0.0",
-  "maintainer": "Huseyin Akbas",
+  "maintainer": "h4kbas",
   "license": "mit",
   "provides": {
     "pgcalendar": {
@@ -15,7 +15,7 @@
   "prereqs": {
     "runtime": {
       "requires": {
-        "PostgreSQL": "12.0"
+        "PostgreSQL": "12.0.0"
       }
     }
   },

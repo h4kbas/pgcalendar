@@ -5,3 +5,5 @@ module_pathname = '$libdir/pgcalendar'
 relocatable = false
 schema = pgcalendar
 superuser = false
+# Note: For CREATE EXTENSION, PostgreSQL requires versioned files (pgcalendar--1.0.1.sql)
+# For manual installation, use pgcalendar.sql directly

@@ -45,3 +45,21 @@ postgres_data_test/
 # PGXN package files
 pgcalendar-*.tar.gz
 pgcalendar-*/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# TypeScript
+*.tsbuildinfo
+dist/
+coverage/
+
+# Environment variables
+.env
+.env.local
+.env.*.local

@@ -1,0 +1,35 @@
+{
+  "name": "pgcalendar",
+  "version": "1.0.1",
+  "description": "Infinite Calendar Extension for PostgreSQL - Test Suite",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:db:start": "./tests/start-db.sh",
+    "test:db:stop": "docker stop pgcalendar-test || true",
+    "test:db:clean": "docker stop pgcalendar-test && docker rm pgcalendar-test || true",
+    "build": "tsc",
+    "type-check": "tsc --noEmit"
+  },
+  "keywords": [
+    "postgresql",
+    "extension",
+    "calendar",
+    "testing"
+  ],
+  "author": "h4kbas",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.24",
+    "@types/pg": "^8.11.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "pg": "^8.11.3"
+  }
+}

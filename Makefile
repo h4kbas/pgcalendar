@@ -79,7 +79,7 @@ build: clean
 	fi
 	@mkdir -p dist/$(EXTENSION)-$(VERSION)
 	@cp $(EXTENSION).control dist/$(EXTENSION)-$(VERSION)/
-	@cp $(EXTENSION).sql dist/$(EXTENSION)-$(VERSION)/$(EXTENSION)--$(VERSION).sql
+	@sed '/^CREATE SCHEMA IF NOT EXISTS pgcalendar;$$/d' $(EXTENSION).sql > dist/$(EXTENSION)-$(VERSION)/$(EXTENSION)--$(VERSION).sql
 	@if [ -f "$(EXTENSION)--uninstall.sql" ]; then \
 		cp $(EXTENSION)--uninstall.sql dist/$(EXTENSION)-$(VERSION)/$(EXTENSION)--$(VERSION)--uninstall.sql; \
 	fi

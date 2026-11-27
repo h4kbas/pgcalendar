@@ -45,7 +45,9 @@ psql -d your_database -c "CREATE EXTENSION pgcalendar;"
 ```bash
 # Copy files to PostgreSQL extensions directory
 sudo cp pgcalendar.control /usr/share/postgresql/15/extension/
-sudo cp pgcalendar.sql /usr/share/postgresql/15/extension/pgcalendar--1.0.1.sql
+make build
+tar -xzf pgcalendar-1.0.1.tar.gz pgcalendar-1.0.1/pgcalendar--1.0.1.sql
+sudo cp pgcalendar-1.0.1/pgcalendar--1.0.1.sql /usr/share/postgresql/15/extension/
 sudo cp pgcalendar--uninstall.sql /usr/share/postgresql/15/extension/pgcalendar--1.0.1--uninstall.sql
 
 # Create extension in your database
